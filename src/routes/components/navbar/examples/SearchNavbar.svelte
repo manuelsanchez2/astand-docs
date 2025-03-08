@@ -15,7 +15,7 @@
 
 <Navbar {navStatus} breakPoint="lg" hamburgerMenu={false}>
   {#snippet brand()}
-    <NavBrand siteName="Svelte 5 UI Lib">
+    <NavBrand siteName="Astand">
       <img width="30" src="/images/svelte-icon.png" alt="svelte icon" />
     </NavBrand>
   {/snippet}

@@ -1,4 +1,4 @@
-import { ANALYTICS_ID_RUNES_LIB } from "$env/static/private";
+// import { ANALYTICS_ID_RUNES_LIB } from "$env/static/private";
 import type { MetaProps } from "runes-meta-tags";
 import { splitAndCapitalize, removeHyphensAndCapitalize } from "./utils/helpers";
 export const load = ({ url }) => {
@@ -26,13 +26,12 @@ export const load = ({ url }) => {
       url: url.href,
       image,
       imageAlt: title,
-      siteName: "Svelte 5 UI Lib",
+      siteName: "Astand",
       imageWidth: "1200",
       imageHeight: "630"
     }
   };
   return {
-    layoutMetaTags,
-    ANALYTICS_ID_RUNES_LIB
+    layoutMetaTags
   };
 };

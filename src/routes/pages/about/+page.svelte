@@ -14,7 +14,7 @@
 <div class="p-4">
   <H1>About</H1>
 
-  <P>Svelte 5 UI Lib – a UI library for Svelte 5 and built upon Flowbite/Flowbite-Svelte.</P>
+  <P>Astand – a UI library for Svelte 5 and built upon Flowbite/Flowbite-Svelte.</P>
 
   <H2>Techinical info</H2>
   <List>

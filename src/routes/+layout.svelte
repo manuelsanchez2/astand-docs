@@ -1,6 +1,5 @@
 <script lang="ts">
   import { RunesMetaTags, deepMerge } from "runes-meta-tags";
-  import { Runatics } from "runatics";
   import { page } from "$app/stores";
   import "../app.pcss";
   import Footer from "./utils/Footer.svelte";
@@ -31,7 +30,6 @@
   let navClass = "w-full divide-gray-200 border-gray-200 bg-gray-50 dark_bg_theme text-gray-500 dark:divide-gray-700 dark:border-gray-700 dark:transparent dark:text-gray-400 sm:px-4";
   let { children, data } = $props();
 
-  const analyticsId = data.ANALYTICS_ID_RUNES_LIB;
   // meta tags
   let metaTags = $state($page.data.pageMetaTags ? deepMerge($page.data.layoutMetaTags, $page.data.pageMetaTags) : data.layoutMetaTags);
 
@@ -42,10 +40,9 @@
   });
 </script>
 
-<Runatics {analyticsId} />
 <RunesMetaTags {...metaTags} />
 
-<header class="sticky top-0 z-50 mx-auto w-full flex-none border-b border-gray-200 bg-gray-50 lg:pl-4 dark:border-gray-600 dark:bg-gray-950">
+<header class="sticky top-0 z-50 mx-auto w-full flex-none border-b border-gray-200 bg-gray-50 lg:fixed dark:border-gray-600 dark:bg-gray-950">
   <Navbar {navClass} {toggleNav} {closeNav} {navStatus} fluid div2Class="ml-auto w-full">
     {#snippet brand()}
       <button onclick={sidebarUi.toggle} type="button" class="z-50 mr-4 mt-1 lg:hidden" aria-controls="sidebar" aria-expanded={isOpen}>
@@ -54,12 +51,11 @@
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
         </svg>
       </button>
-      <NavBrand siteName="Svelte 5 UI lib" spanClass="text-xl sm:text-3xl">
+      <NavBrand siteName="Astand" spanClass="text-xl sm:text-3xl">
         <img width="30" src="/images/svelte-icon.png" class="h-6 w-5 sm:h-10 sm:w-8" alt="svelte icon" />
       </NavBrand>
 
       <div class="ml-auto flex items-center space-x-2 md:order-1">
-        <DynamicCodeBlockStyle class="mr-4 hidden sm:block" />
         <a class="inline-block whitespace-normal rounded-lg p-1 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-0 focus:ring-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" href="https://github.com/shinokada/svelte-5-ui-lib" aria-label="View project on GitHub">
           <GitHub class="hidden sm:block" tabindex={0} />
         </a>
@@ -67,21 +63,23 @@
       </div>
     {/snippet}
     <NavUl class="md:space-x-6 lg:space-x-8" {activeUrl}>
-      <NavLi href="/pages/coverage">Coverage</NavLi>
-      <NavLi href="/pages/about">About</NavLi>
+      <!-- <NavLi href="/pages/coverage">Coverage</NavLi> -->
+      <!-- <NavLi href="/pages/about">About</NavLi> -->
+      <NavLi href="/pages/installation">Getting Started</NavLi>
       <NavLi class="sm:hidden" href="https://github.com/shinokada/svelte-5-ui-lib">Repo</NavLi>
     </NavUl>
     <div class="mt-4 flex justify-end space-x-4 sm:hidden"><DynamicCodeBlockStyle /> <Darkmode class="sm:hidden" /></div>
   </Navbar>
 </header>
 <div class="lg:flex" id="sidebar">
-  <Sidebar {activeUrl} isSingle {isOpen} {closeSidebar} breakpoint="lg" activeClass="flex items-center p-1 text-base font-normal text-white dark:hover:text-white hover:text-gray-900 bg-primary-700 dark:bg-primary-700 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" nonActiveClass="p-1 hover:bg-gray-200" divClass="dark:bg-gray-900 bg-gray-50" class="top-[62px] h-screen dark:bg-gray-900">
-    <SidebarGroup>
+  <Sidebar {activeUrl} isSingle {isOpen} {closeSidebar} breakpoint="lg" activeClass="flex items-center p-1 text-base font-normal text-white dark:hover:text-white hover:text-gray-900 bg-primary-700 dark:bg-primary-700 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" nonActiveClass="p-1 hover:bg-gray-200" divClass="dark:bg-gray-900 bg-gray-50 dark:border-gray-700 border-r border-gray-200" class="top-[62px] h-screen dark:bg-gray-900">
+    <SidebarGroup class="pt-8">
       <SidebarDropdownWrapper label="GETTING STARTED" isOpen={pageStatus} svgClass="me-4" btnClass="p-1">
-        <SidebarItem label="About" href="/pages/about" />
-        <SidebarItem label="Coverage" href="/pages/coverage" />
+        <!-- <SidebarItem label="About" href="/pages/about" /> -->
+        <!-- <SidebarItem label="Coverage" href="/pages/coverage" /> -->
+        <SidebarItem label="Installation" href="/pages/installation" />
       </SidebarDropdownWrapper>
-      <SidebarDropdownWrapper label="Components" isOpen={componentStatus} svgClass="me-4" btnClass="p-1">
+      <!-- <SidebarDropdownWrapper label="Components" isOpen={componentStatus} svgClass="me-4" btnClass="p-1">
         <SidebarItem label="Accordion" href="/components/accordion" />
         <SidebarItem label="Alert" href="/components/alert" />
         <SidebarItem label="Avatar" href="/components/avatar" />
@@ -119,8 +117,8 @@
         <SidebarItem label="Toast" href="/components/toast" />
         <SidebarItem label="Tooltip" href="/components/tooltip" />
         <SidebarItem label="Video" href="/components/video" />
-      </SidebarDropdownWrapper>
-      <SidebarDropdownWrapper label="Forms" isOpen={hasPath("forms")} svgClass="me-4" btnClass="p-1">
+      </SidebarDropdownWrapper> -->
+      <!-- <SidebarDropdownWrapper label="Forms" isOpen={hasPath("forms")} svgClass="me-4" btnClass="p-1">
         <SidebarItem label="Checkbox" href="/forms/checkbox" />
         <SidebarItem label="File input" href="/forms/file-input" />
         <SidebarItem label="Floating label" href="/forms/floating-label" />
@@ -132,8 +130,8 @@
         <SidebarItem label="Select" href="/forms/select" />
         <SidebarItem label="Textarea" href="/forms/textarea" />
         <SidebarItem label="Toggle" href="/forms/toggle" />
-      </SidebarDropdownWrapper>
-      <SidebarDropdownWrapper label="Typography" isOpen={hasPath("typography")} svgClass="me-4" btnClass="p-1">
+      </SidebarDropdownWrapper> -->
+      <!-- <SidebarDropdownWrapper label="Typography" isOpen={hasPath("typography")} svgClass="me-4" btnClass="p-1">
         <SidebarItem label="Blockquote" href="/typography/blockquote" />
         <SidebarItem label="Heading/Mark" href="/typography/heading" />
         <SidebarItem label="HR" href="/typography/hr" />
@@ -143,13 +141,13 @@
         <SidebarItem label="List" href="/typography/list" />
         <SidebarItem label="Paragraph" href="/typography/paragraph" />
         <SidebarItem label="Span" href="/typography/span" />
-      </SidebarDropdownWrapper>
-      <SidebarDropdownWrapper label="Plugins" svgClass="me-4" btnClass="p-1">
+      </SidebarDropdownWrapper> -->
+      <!-- <SidebarDropdownWrapper label="Plugins" svgClass="me-4" btnClass="p-1">
         <SidebarItem label="Chart" href="/plugins/chart" />
-      </SidebarDropdownWrapper>
+      </SidebarDropdownWrapper> -->
     </SidebarGroup>
   </Sidebar>
-  <main class="mx-auto min-w-0 max-w-7xl flex-auto px-8 pb-20 lg:static lg:max-h-full lg:overflow-visible lg:pl-72">
+  <main class="mx-auto min-w-0 max-w-7xl flex-auto px-8 pb-20 lg:static lg:max-h-full lg:overflow-visible lg:pl-72 lg:pt-20">
     <div id="mainContent">
       {@render children()}
     </div>

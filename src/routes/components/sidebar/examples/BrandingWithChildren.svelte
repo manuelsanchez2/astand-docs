@@ -20,8 +20,8 @@
     <CloseButton onclick={closeDemoSidebar} color="gray" class="absolute right-1 top-3 p-2 md:hidden" />
     <SidebarGroup>
       <SidebarBrand>
-        <img src="/images/flowbite-svelte-icon-logo.svg" alt="Svelte 5 UI Lib" class="h-6 w-6" />
-        <span class="ml-2 self-center whitespace-nowrap text-xl font-semibold dark:text-white">Svelte 5 UI Lib</span>
+        <img src="/images/flowbite-svelte-icon-logo.svg" alt="Astand" class="h-6 w-6" />
+        <span class="ml-2 self-center whitespace-nowrap text-xl font-semibold dark:text-white">Astand</span>
       </SidebarBrand>
       <SidebarItem label="Dashboard" href="/">
         {#snippet iconSlot()}

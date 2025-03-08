@@ -18,7 +18,7 @@
 
 <H1><a class="hover:underline dark:text-primary-500" href={githuburl}>{removeHyphensAndCapitalize(name)}: v{version}</a></H1>
 
-<P>Svelte 5 UI Lib is a UI library built from scratch to leverage Svelte 5's runes system, creating smooth, reactive components.</P>
+<P>Astand is a UI library built from scratch to leverage Svelte 5's runes system, creating smooth, reactive components.</P>
 
 <H2>Installation</H2>
 
