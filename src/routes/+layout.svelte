@@ -17,7 +17,7 @@
   let activeUrl = $state($page.url.pathname);
   const hasPath = (key: string) => activeUrl.includes(key);
   let pageStatus = $derived(hasPath("pages"));
-  let componentStatus = $derived(hasPath("components"));
+  // let componentStatus = $derived(hasPath("components"));
 
   $effect(() => {
     navStatus = nav.isOpen;
@@ -41,6 +41,7 @@
 </script>
 
 <RunesMetaTags {...metaTags} />
+<DynamicCodeBlockStyle />
 
 <header class="sticky top-0 z-50 mx-auto w-full flex-none border-b border-gray-200 bg-gray-50 lg:fixed dark:border-gray-600 dark:bg-gray-950">
   <Navbar {navClass} {toggleNav} {closeNav} {navStatus} fluid div2Class="ml-auto w-full">
@@ -52,11 +53,11 @@
         </svg>
       </button>
       <NavBrand siteName="Astand" spanClass="text-xl sm:text-3xl">
-        <img width="30" src="/images/svelte-icon.png" class="h-6 w-5 sm:h-10 sm:w-8" alt="svelte icon" />
+        <img width="30" src="/images/astand-icon.png" class="h-6 w-5 sm:h-10 sm:w-8" alt="astand icon" />
       </NavBrand>
 
       <div class="ml-auto flex items-center space-x-2 md:order-1">
-        <a class="inline-block whitespace-normal rounded-lg p-1 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-0 focus:ring-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" href="https://github.com/shinokada/svelte-5-ui-lib" aria-label="View project on GitHub">
+        <a class="inline-block whitespace-normal rounded-lg p-1 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-0 focus:ring-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" href="https://github.com/manuelsanchez2/astand-docs" aria-label="View project on GitHub">
           <GitHub class="hidden sm:block" tabindex={0} />
         </a>
         <Darkmode class="hidden sm:block" />
@@ -65,10 +66,10 @@
     <NavUl class="md:space-x-6 lg:space-x-8" {activeUrl}>
       <!-- <NavLi href="/pages/coverage">Coverage</NavLi> -->
       <!-- <NavLi href="/pages/about">About</NavLi> -->
-      <NavLi href="/pages/installation">Getting Started</NavLi>
-      <NavLi class="sm:hidden" href="https://github.com/shinokada/svelte-5-ui-lib">Repo</NavLi>
+      <NavLi href="/pages/introduction">Getting Started</NavLi>
+      <NavLi class="sm:hidden" href="https://github.com/manuelsanchez2/astand-docs">Repo</NavLi>
     </NavUl>
-    <div class="mt-4 flex justify-end space-x-4 sm:hidden"><DynamicCodeBlockStyle /> <Darkmode class="sm:hidden" /></div>
+    <div class="mt-4 flex justify-end space-x-4 sm:hidden"><Darkmode class="sm:hidden" /></div>
   </Navbar>
 </header>
 <div class="lg:flex" id="sidebar">
@@ -77,6 +78,7 @@
       <SidebarDropdownWrapper label="GETTING STARTED" isOpen={pageStatus} svgClass="me-4" btnClass="p-1">
         <!-- <SidebarItem label="About" href="/pages/about" /> -->
         <!-- <SidebarItem label="Coverage" href="/pages/coverage" /> -->
+        <SidebarItem label="Introduction" href="/pages/introduction" />
         <SidebarItem label="Installation" href="/pages/installation" />
       </SidebarDropdownWrapper>
       <!-- <SidebarDropdownWrapper label="Components" isOpen={componentStatus} svgClass="me-4" btnClass="p-1">

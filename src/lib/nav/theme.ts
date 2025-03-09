@@ -71,7 +71,7 @@ export const navUl = tv({
 export const navbrand = tv({
   slots: {
     base: "flex items-center space-x-3 rtl:space-x-reverse",
-    span: "self-center whitespace-nowrap text-2xl font-semibold text-primary-900 dark:text-white sm:text-3xl"
+    span: "self-center whitespace-nowrap text-2xl font-bold text-black dark:text-white sm:text-3xl"
   }
 });
 

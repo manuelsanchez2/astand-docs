@@ -1,9 +1,6 @@
 <script lang="ts">
   import { P, A } from "$lib";
-  import HighlightCompo from "./utils/HighlightCompo.svelte";
   import H1 from "./utils/H1.svelte";
-  import H2 from "./utils/H2.svelte";
-  import H3 from "./utils/H3.svelte";
   const modules = import.meta.glob("./md/*.md", {
     query: "?raw",
     import: "default",
@@ -16,9 +13,14 @@
   const githuburl = __GITHUBURL__;
 </script>
 
-<H1><a class="hover:underline dark:text-primary-500" href={githuburl}>{removeHyphensAndCapitalize(name)}: v{version}</a></H1>
+<!-- <H1><a class="text-primary-500 hover:underline" href={githuburl}>{removeHyphensAndCapitalize(name)}: v{version}</a></H1> -->
+<H1 class="!text-primary-500">Astand</H1>
 
-<P>Astand is a UI library built from scratch to leverage Svelte 5's runes system, creating smooth, reactive components.</P>
+<P>
+  Cool things are coming! Please be patient! In the meantime, check out the <A target="_blank" rel="nofollow noopener" href="https://www.npmjs.com/package/astand">npm package</A>.
+</P>
+
+<!-- 
 
 <H2>Installation</H2>
 
@@ -40,4 +42,4 @@
 
 <HighlightCompo class="mb-8" codeLang="js" code={modules["./md/svg-icons.md"] as string} />
 
-<HighlightCompo class="mb-8" codeLang="json" code={modules["./md/tailwind-config.md"] as string} />
+<HighlightCompo class="mb-8" codeLang="json" code={modules["./md/tailwind-config.md"] as string} /> -->
