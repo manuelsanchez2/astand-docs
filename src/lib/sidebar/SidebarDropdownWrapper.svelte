@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getContext } from "svelte";
+  import { getContext, onMount } from "svelte";
   import { writable, type Writable } from "svelte/store";
   import type { ParamsType } from "../types";
   import { slide } from "svelte/transition";
@@ -11,7 +11,7 @@
     isSingle: boolean;
   };
 
-  let { children, arrowup, arrowdown, iconSlot, isOpen = false, btnClass, label, spanClass, ulClass, transition = slide, params, svgClass, class: className, onclick, ...restProps }: Props = $props();
+  let { children, arrowup, arrowdown, iconSlot, isOpen = true, btnClass, label, spanClass, ulClass, transition = slide, params, svgClass, class: className, onclick, ...restProps }: Props = $props();
 
   const { base, btn, span, svg, ul } = $derived(sidebardropdownwrapper());
 
@@ -28,12 +28,16 @@
   // Use the shared selected store if in single mode, otherwise use the local isOpen state
   let selected: Writable<object | null> = ctx.isSingle ? ctx.selected! : writable(self);
 
-  $effect(() => {
+  onMount(() => {
     if (ctx.isSingle) {
-      isOpen = $selected === self;
+      selected.set(self); // explicitly set open on mount
     } else {
-      isOpen = sidebarDropdown.isOpen;
+      sidebarDropdown.isOpen = true;
     }
+  });
+
+  $effect(() => {
+    isOpen = ctx.isSingle ? $selected === self : sidebarDropdown.isOpen;
   });
 
   function handleDropdown() {

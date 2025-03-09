@@ -27,7 +27,7 @@
     // componentStatus = hasPath("components");
   });
 
-  let navClass = "w-full divide-gray-200 border-gray-200 bg-gray-50 dark_bg_theme text-gray-500 dark:divide-gray-700 dark:border-gray-700 dark:transparent dark:text-gray-400 sm:px-4";
+  let navClass = "w-full divide-gray-200 border-gray-200 bg-gray-50 dark_bg_theme text-gray-500 dark:divide-gray-700 dark:border-gray-700 dark:transparent dark:text-gray-400 sm:px-4 flex h-full";
   let { children, data } = $props();
 
   // meta tags
@@ -43,7 +43,7 @@
 <RunesMetaTags {...metaTags} />
 <DynamicCodeBlockStyle />
 
-<header class="sticky top-0 z-50 mx-auto w-full flex-none border-b border-gray-200 bg-gray-50 lg:fixed dark:border-gray-600 dark:bg-gray-950">
+<header class="sticky top-0 z-50 mx-auto h-[61px] w-full flex-none border-b border-gray-200 bg-gray-50 lg:fixed dark:border-gray-600 dark:bg-gray-950">
   <Navbar {navClass} {toggleNav} {closeNav} {navStatus} fluid div2Class="ml-auto w-full">
     {#snippet brand()}
       <button onclick={sidebarUi.toggle} type="button" class="z-50 mr-4 mt-1 lg:hidden" aria-controls="sidebar" aria-expanded={isOpen}>
@@ -56,7 +56,7 @@
         <img width="30" src="/images/astand-icon.png" class="h-6 w-5 sm:h-10 sm:w-8" alt="astand icon" />
       </NavBrand>
 
-      <div class="ml-auto flex items-center space-x-2 md:order-1">
+      <div class="ml-auto flex items-center space-x-2 md:order-1 md:flex">
         <a class="inline-block whitespace-normal rounded-lg p-1 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-0 focus:ring-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" href="https://github.com/manuelsanchez2/astand-docs" aria-label="View project on GitHub">
           <GitHub class="hidden sm:block" tabindex={0} />
         </a>
@@ -148,6 +148,9 @@
         <SidebarItem label="Chart" href="/plugins/chart" />
       </SidebarDropdownWrapper> -->
     </SidebarGroup>
+    <div class="mt-12">
+      <Darkmode class="sm:hidden" />
+    </div>
   </Sidebar>
   <main class="mx-auto min-w-0 max-w-7xl flex-auto px-8 pb-20 lg:static lg:max-h-full lg:overflow-visible lg:pl-72 lg:pt-20">
     <div id="mainContent">
