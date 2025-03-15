@@ -16,14 +16,14 @@
     replaceLib?: boolean;
   }
 
-  let { code, codeLang, badgeClass, buttonClass, replaceLib = true, class: className }: Props = $props();
+  let { code, codeLang, badgeClass, buttonClass, expanded = false, replaceLib = true, class: className }: Props = $props();
 
   if (replaceLib) {
     code = replaceLibImport(code);
   }
 
   let showExpandButton: boolean = $state(false);
-  let expand: boolean = $state(false);
+  let expand: boolean = $state(expanded);
   const checkOverflow = (el: HTMLElement) => {
     const isOverflowingY = el.clientHeight < el.scrollHeight;
     showExpandButton = isOverflowingY;

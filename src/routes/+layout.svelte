@@ -1,11 +1,14 @@
 <script lang="ts">
   import { RunesMetaTags, deepMerge } from "runes-meta-tags";
+  import { AstandDebug } from "astand";
+  import { counterStore } from "../counterStore.svelte";
   import { page } from "$app/stores";
   import "../app.pcss";
   import Footer from "./utils/Footer.svelte";
   import { Navbar, NavLi, NavBrand, NavUl, uiHelpers, Darkmode, Sidebar, SidebarGroup, SidebarItem, SidebarDropdownWrapper } from "$lib";
   import GitHub from "./utils/GitHub.svelte";
   import DynamicCodeBlockStyle from "./utils/DynamicCodeBlockStyle.svelte";
+  import { counterState } from "../counter.svelte";
 
   const sidebarUi = uiHelpers();
   let isOpen = $state(false);
@@ -66,20 +69,29 @@
     <NavUl class="md:space-x-6 lg:space-x-8" {activeUrl}>
       <!-- <NavLi href="/pages/coverage">Coverage</NavLi> -->
       <!-- <NavLi href="/pages/about">About</NavLi> -->
-      <NavLi href="/pages/introduction">Getting Started</NavLi>
+      <NavLi href="/pages/installation">Getting Started</NavLi>
       <NavLi class="sm:hidden" href="https://github.com/manuelsanchez2/astand-docs">Repo</NavLi>
     </NavUl>
     <div class="mt-4 flex justify-end space-x-4 sm:hidden"><Darkmode class="sm:hidden" /></div>
   </Navbar>
 </header>
 <div class="lg:flex" id="sidebar">
-  <Sidebar {activeUrl} isSingle {isOpen} {closeSidebar} breakpoint="lg" activeClass="flex items-center p-1 text-base font-normal text-white dark:hover:text-white hover:text-gray-900 bg-primary-700 dark:bg-primary-700 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" nonActiveClass="p-1 hover:bg-gray-200" divClass="dark:bg-gray-900 bg-gray-50 dark:border-gray-700 border-r border-gray-200" class="top-[62px] h-screen dark:bg-gray-900">
-    <SidebarGroup class="pt-8">
-      <SidebarDropdownWrapper label="GETTING STARTED" isOpen={pageStatus} svgClass="me-4" btnClass="p-1">
+  <Sidebar {activeUrl} isSingle {isOpen} {closeSidebar} breakpoint="lg" activeClass="flex items-center p-1 text-base font-normal text-white dark:hover:text-white hover:text-gray-900 bg-primary-700 dark:bg-primary-700 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" nonActiveClass="p-1 hover:bg-gray-200" divClass="dark:bg-gray-900 bg-gray-50 dark:border-gray-700 border-r border-gray-200" class="top-[62px] h-screen dark:bg-gray-900">
+    <SidebarGroup class="flex flex-col gap-4 pt-8">
+      <SidebarDropdownWrapper label="First steps" isOpen={true} svgClass="me-4" btnClass="p-1 border">
         <!-- <SidebarItem label="About" href="/pages/about" /> -->
         <!-- <SidebarItem label="Coverage" href="/pages/coverage" /> -->
-        <SidebarItem label="Introduction" href="/pages/introduction" />
         <SidebarItem label="Installation" href="/pages/installation" />
+        <SidebarItem label="Svelte vs Astand Way" href="/pages/svelte-vs-astand-way" />
+      </SidebarDropdownWrapper>
+
+      <SidebarDropdownWrapper label="Middlewares" isOpen={true} svgClass="me-4" btnClass="p-1 border">
+        <SidebarItem label="Log" href="/pages/middlewares/log" />
+        <SidebarItem label="Validation" href="/pages/middlewares/validation" />
+      </SidebarDropdownWrapper>
+
+      <SidebarDropdownWrapper label="Other Features" isOpen={true} svgClass="me-4" btnClass="p-1 border">
+        <SidebarItem label="AstandDebug" href="/pages/features/astanddebug" />
       </SidebarDropdownWrapper>
       <!-- <SidebarDropdownWrapper label="Components" isOpen={componentStatus} svgClass="me-4" btnClass="p-1">
         <SidebarItem label="Accordion" href="/components/accordion" />
@@ -159,3 +171,13 @@
   </main>
 </div>
 <Footer />
+
+<AstandDebug
+  stores={[
+    {
+      name: "counterState",
+      store: counterStore,
+      actions: { increment: counterStore.increment, decrement: counterStore.decrement }
+    }
+  ]}
+/>

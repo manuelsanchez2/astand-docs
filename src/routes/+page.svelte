@@ -1,6 +1,9 @@
 <script lang="ts">
-  import { P, A } from "$lib";
+  import { P, A, List, Li } from "$lib";
+  import Divider from "./components/aa/Divider.svelte";
   import H1 from "./utils/H1.svelte";
+  import H2 from "./utils/H2.svelte";
+  import H3 from "./utils/H3.svelte";
   const modules = import.meta.glob("./md/*.md", {
     query: "?raw",
     import: "default",
@@ -14,11 +17,50 @@
 </script>
 
 <!-- <H1><a class="text-primary-500 hover:underline" href={githuburl}>{removeHyphensAndCapitalize(name)}: v{version}</a></H1> -->
-<H1 class="!text-primary-500">Astand</H1>
+<H1>Astand</H1>
 
 <P>
-  Cool things are coming! Please be patient! In the meantime, check out the <A target="_blank" rel="nofollow noopener" href="https://www.npmjs.com/package/astand">npm package</A>.
+  We are trying to make it easier to manage global state in Svelte. We have created a library that enhances Svelte's reactive state management with additional capabilities. This library is called <strong>Astand</strong>
+  .
 </P>
+
+<P>
+  The word <em>ástand</em>
+  in Icelandic translates to "state" in English, but it carries a deeper connotation beyond just a static condition. In Icelandic,
+  <em>ástand</em>
+  can refer to a situation, condition, or overall status—whether it's about a person's well-being, the state of affairs, or even the condition of an environment. So, in the realm of Svelte, ástand isn't just about holding data—it's about shaping and reacting to the ever-changing conditions of an app's state, just like how life and circumstances are always in flux.
+</P>
+
+<H2>Why Astand?</H2>
+
+<P>Inspired by the simplicity of Zustand and deeply integrated with Svelte's reactive system, Astand offers developers an intuitive and highly performant approach to managing global or scoped state.</P>
+
+<H3>Key highlights of Astand:</H3>
+
+<List>
+  <Li>
+    <strong>Minimal Boilerplate:</strong>
+    Quickly set up and manage state without extensive configuration.
+  </Li>
+  <Li>
+    <strong>Middleware Support:</strong>
+    Easily extend state stores with middleware for logging, debugging, validation, or other cross-cutting concerns.
+  </Li>
+  <Li>
+    <strong>Full TypeScript Integration:</strong>
+    Built with TypeScript-first principles, ensuring excellent type safety and developer experience out of the box.
+  </Li>
+  <Li>
+    <strong>Native Svelte Compatibility:</strong>
+    Directly implements Svelte's store contract (subscribe method), allowing seamless integration into Svelte applications without extra wrappers or adapters.
+  </Li>
+</List>
+
+<P>Compared to native Svelte stores and alternative libraries, Astand provides an enhanced developer experience through built-in support for common tasks (such as state persistence and middleware), reducing complexity and streamlining your application's state management.</P>
+
+<Divider />
+
+<a class="my-8 inline-flex items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-center text-sm font-medium text-white focus-within:outline-none focus-within:ring-4 focus-within:ring-primary-300 hover:bg-primary-800 dark:bg-primary-600 dark:focus-within:ring-primary-800 dark:hover:bg-primary-700" href="/pages/installation">Go to Installation</a>
 
 <!-- 
 
