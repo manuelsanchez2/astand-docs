@@ -9,6 +9,7 @@
   import H1 from "../../utils/H1.svelte";
   // import HighlightCompo from "../../utils/HighlightCompo.svelte";
   import HighlightCompo from "../../utils/HighlightCompo.svelte";
+  import Page from "../theme/+page.svelte";
 
   //   import H2 from "../../utils/H2.svelte";
 
@@ -31,7 +32,7 @@
   <H1>Svelte vs Astand Way</H1>
 
   <P>
-    Svelte 5 already provides an amazing way to manage global state. For example, you could simply place this inside a file called <code>counter.svelte.ts</code>
+    Svelte 5 already provides an amazing way to manage global state. Let's imagine that we want to create the classic store for a counter. For example, you could simply place this inside a file called <code>counter.svelte.ts</code>
     .
   </P>
 
@@ -58,7 +59,9 @@
   <HighlightCompo expanded class="mb-8" codeLang="js" code={modules["../../md/astand-stateway.md"] as string} />
 
   <P>
-    We are writing more code to achieve the very same thing. That might not sound very appealing, but did you notice the empty options object? That's where the magic of Astand comes into play. Here, <strong>>we can add multiple middlewares, such as debugging or validation, and persist properties, like storing the state after an update in local or session storage.</strong>
+    We are writing more code to achieve the very same thing. That might not sound very appealing, but did you notice the empty <code>options</code>
+    object? That's where the magic of Astand comes into play. Here,
+    <strong>we can add multiple middlewares, such as debugging or validation, and persist properties, like storing the state after an update in local or session storage.</strong>
     Look how simple it is:
   </P>
 
